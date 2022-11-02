@@ -21,4 +21,14 @@ export const menuItems: MenuItem[] = [
       icon: 'alert-circle-outline',
       component: 'AlertScreen',
     },
+    {
+      name: 'Text Inputs',
+      icon: 'document-text-outline',
+      component: 'TextInputScreen',
+    },
+    {
+      name: 'Pull to Refresh',
+      icon: 'refresh-outline',
+      component: 'PullToRefreshScreen',
+    },
   ];
