@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {CustomSwitch} from '../components/CustomSwitch';
 import {HeaderTitle} from '../components/HeaderTitle';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const SwitchScreen = () => {
   const [state, setstate] = useState({
@@ -12,7 +13,7 @@ export const SwitchScreen = () => {
   });
 
   const {isActive, isHungry, isHappy} = state;
-
+const {theme} = useContext(ThemeContext)
   const onChange = (value: boolean, field: string) => {
     setstate({
       ...state,
@@ -24,27 +25,27 @@ export const SwitchScreen = () => {
       <View style={{marginHorizontal: 20}}>
         <HeaderTitle title="Switches" />
         <View style={styles.switchRows}>
-          <Text style={styles.switchText}>Is Active</Text>
+          <Text style={{...styles.switchText, color:theme.colors.text}}>Is Active</Text>
           <CustomSwitch
             isOn={isActive}
             onChange={value => onChange(value, 'isActive')}
           />
         </View>
         <View style={styles.switchRows}>
-          <Text style={styles.switchText}>Is Hungry</Text>
+          <Text style={{...styles.switchText, color:theme.colors.text}}>Is Hungry</Text>
           <CustomSwitch
             isOn={isHungry}
             onChange={value => onChange(value, 'isHungry')}
           />
         </View>
         <View style={styles.switchRows}>
-          <Text style={styles.switchText}>Is Happy</Text>
+          <Text style={{...styles.switchText, color:theme.colors.text}}>Is Happy</Text>
           <CustomSwitch
             isOn={isHappy}
             onChange={value => onChange(value, 'isHappy')}
           />
         </View>
-        <Text style={styles.switchText}>{JSON.stringify(state, null, 5)}</Text>
+        <Text style={{...styles.switchText, color:theme.colors.text}}>{JSON.stringify(state, null, 5)}</Text>
       </View>
     </>
   );
